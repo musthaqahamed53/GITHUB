@@ -25,3 +25,17 @@ VALUES ('SAM','23','MALE','MADURAI','9787529888'),('SAM2','23','MALE','MADURAI',
 
 DELETE FROM STUDENTS WHERE ID=3;
 UPDATE STUDENTS SET CITY='COIMBATORE', CONTACT='1234567891' WHERE ID=5;
+
+truncate TABLE STUDENTS;
+INSERT INTO students(name,age,gender,city,contact) 
+VALUES ('Ravi',23,'Male','Namakkal','9876543210'),('Sara',23,'Female','Erode','9874521360'),
+('Ravi1',23,'Male','Namakkal','9876543210'),('Sara1',23,'Female','Erode','9874521360'),
+('Ravi2',23,'Male','Namakkal','9876543210'),('Sara2',23,'Female','Erode','9874521360'),
+('Ravi3',23,'Male','Namakkal','9876543210'),('Sara3',23,'Female','Erode','9874521360'),
+('Ravi4',23,'Male','Namakkal','9876543210'),('Sara4',23,'Female','Erode','9874521360'),
+('Ravi5',23,'Male','Namakkal','9876543210'),('Sara5',23,'Female','Erode','9874521360'),
+('Ravi6',23,'Male','Namakkal','9876543210'),('Sara6',23,'Female','Erode','9874521360'),
+('Ravi7',23,'Male','Namakkal','9876543210'),('Sara7',23,'Female','Erode','9874521360'),
+('Ravi8',23,'Male','Namakkal','9876543210'),('Sara8',23,'Female','Erode','9874521360');
+
+SELECT NAME,AGE FROM STUDENTS;

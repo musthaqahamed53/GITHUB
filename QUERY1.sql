@@ -31,7 +31,7 @@ SHOW TABLES;
 /* To view structure of a table:*/
 DESCRIBE table_name;
 
-Ex:
+-- Ex:
 DESCRIBE users;
 
 /* To add a new column inside a table:*/
