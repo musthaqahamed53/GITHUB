@@ -37,11 +37,13 @@ add column coffee_origin varchar(30);
 alter table products
 drop column coffee_origin;
 
+use coffee_store;
+SELECT * FROM products; -- inserting data into into tables
+insert into products(name,price,coffee_origin)
+values('Espresso',2.50,'Brazil');
 
-
-
-
-
+insert into products(name,price,coffee_origin)
+values('Machiatto',3,'Brazil'),('Cappuchino',4,'Costa Rica'); -- inserting multiple data into into tables
 
 
 
