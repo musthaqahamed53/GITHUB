@@ -101,8 +101,45 @@ where last_name between 'A' and 'Y' and phone_number is null;
 select * from customers
 where last_name in ('Martin','Bluth') and gender='F';
 
+select * from customers
+where first_name like '%o%';
 
+select * from customers
+where first_name like '_o%';
 
+select * from customers
+where first_name like '_o_';
 
+-- from the products table select the name and price of all products with a coffee origin equal to Colombia or Indonesia and then ordered by name from a to z.
+select * from products;
+select name, price from products
+where coffee_origin in ('Columbia', 'Indonesia')
+order by name asc;
 
+-- from the orders table select all the orders from February 2017 for customers with ids of 2, 4, 6 or 8.
+select * from orders;
+select * from orders
+where order_time like '2017-02%' and customer_id in (2,4,6,8);
 
+-- from the customers table select the first name and phone number of all customers, his last name contains the pattern ar.
+select * from customers;
+select first_name, phone_number from customers
+where last_name like '%ar%';
+
+select * from customers
+limit 5;
+
+select * from customers
+limit 5 offset 5;
+
+-- from the customers table select distinct last names and order them alphabetically from a to z.
+select distinct last_name from customers order by last_name asc;
+
+-- select from the orders table to select the first three orders placed by customer with id1 in February 2017.
+select * from orders
+where customer_id =1 and order_time like '2017-02%'
+limit 3;
+
+-- select the name price and coffee origin from the products table, but to rename the price column to retail price in the result set.
+select * from products;
+select name, price as retail_price, coffee_origin from products;
