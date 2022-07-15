@@ -53,7 +53,7 @@ values('Latte',3.5,'Indonesia'),
 
 select distinct coffee_origin from products;
 
-update products set name = 'Cappucino' where id = 3;
+update products set name = 'Cappucino' where id = 3; -- updating table data
 update products set coffee_origin = 'Srilanka' where id = 7;
 update products set price = 3.25 where id=5;
 
@@ -143,3 +143,71 @@ limit 3;
 -- select the name price and coffee origin from the products table, but to rename the price column to retail price in the result set.
 select * from products;
 select name, price as retail_price, coffee_origin from products;
+
+
+-- Joins in mySQL
+describe orders;
+select * from orders;
+select * from products; 
+select * from customers;
+
+-- Inner join
+-- selecting name from products and time from orders by inner joining the FK in orders and PK in products
+select products.name, orders.order_time from orders
+inner join products on orders.product_id = products.id;
+
+-- can also written as -- shorthand version by using table name alias
+select p.name, o.order_time from orders o
+join products p on o.product_id = p.id;
+
+-- selecting name,price from products and time from orders by inner joining the FK in orders and PK in products and order by ordertime
+select p.name, p.price, o.order_time from orders o
+join products p on o.product_id = p.id
+order by o.order_time asc;
+
+-- selecting name,price from products and time from orders by inner joining the FK in orders and PK in products , where product id is 5 and order by ordertime
+select p.name, p.price, o.order_time from orders o
+join products p on o.product_id = p.id
+where p.id = 5
+order by o.order_time asc;
+
+select * from orders;
+select * from products; 
+select * from customers;
+
+select c.first_name, c.last_name, o.order_time, c.phone_number from customers c
+join orders o on o.customer_id = c.id;
+
+update orders set customer_id=null where id=1;
+
+SELECT o.id, c.phone_number, c.last_name, o.order_time FROM orders o
+left JOIN customers c ON o.customer_id = c.id
+ORDER BY o.order_time asc
+LIMIT 10;
+
+SELECT o.id, c.phone_number, c.last_name, o.order_time FROM orders o
+right JOIN customers c ON o.customer_id = c.id
+ORDER BY o.order_time asc
+LIMIT 10;
+
+update orders set customer_id=1 where id=1;
+
+select * from orders;
+select * from products; 
+select * from customers;
+
+-- select the order id and customer's phone  number for all orders of product id 4.
+select o.id, c.phone_number from orders o
+join customers c on c.id=o.customer_id
+where o.product_id=4;
+
+-- select the product name and order time for filter coffees sold between January  the 15th 2017 and February the 14th 2017.
+select p.name, o.order_time from products p
+join orders o on o.product_id=p.id
+where p.name like 'Filter' and order_time between '2017-01-15' and '2017-02-14';
+
+-- select the product name and price and order time for all orders  from females in January 2017.
+select p.name, p.price, o.order_time from products p
+join orders o on o.product_id-p.id
+join customers c on c.id=o.customer_id
+where c.gender='F' and o.order_time like '2017-01%';
