@@ -204,7 +204,7 @@ where o.product_id=4;
 -- select the product name and order time for filter coffees sold between January  the 15th 2017 and February the 14th 2017.
 select p.name, o.order_time from products p
 join orders o on o.product_id=p.id
-where p.name like 'Filter' and order_time between '2017-01-15' and '2017-02-14';
+where p.name like 'Filter' and o.order_time between '2017-01-15' and '2017-02-14';
 
 -- select the product name and price and order time for all orders  from females in January 2017.
 select p.name, p.price, o.order_time from products p
